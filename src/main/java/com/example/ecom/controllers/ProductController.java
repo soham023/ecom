@@ -42,7 +42,7 @@ public class ProductController {
     }
 
     @GetMapping("/productById/{id}")
-    /* with PathVariable the parameter that you are passing into your finction (here it is id), It gets
+    /* with PathVariable the parameter that you are passing into your function (here it is id), It gets
     wired up with the parameter that is coming from your routes.
      */
     public ResponseEntity<ProductDTO>  getProductById (@PathVariable Long id) throws Exception {

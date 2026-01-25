@@ -1,23 +1,23 @@
 package com.example.ecom.mappers;
 
 import com.example.ecom.dto.ProductDTO;
-import com.example.ecom.entities.Product;
+import com.example.ecom.entities.ProductEntity;
 
 public class ProductMapper {
 
-    public static ProductDTO toDTOFromEntity(Product product){
+    public static ProductDTO toDTOFromEntity(ProductEntity productEntity){
         return ProductDTO.builder()
-                .id(product.getId())
-                .price(product.getPrice())
-                .title(product.getTitle())
-                .image(product.getImage())
-                .category(product.getCategory())
-                .description(product.getDescription())
+                .id(productEntity.getId())
+                .price(productEntity.getPrice())
+                .title(productEntity.getTitle())
+                .image(productEntity.getImage())
+                .category(productEntity.getCategory())
+                .description(productEntity.getDescription())
                 .build();
     }
 
-    public static Product toEntityFromDTO(ProductDTO productDTO){
-        return Product.builder()
+    public static ProductEntity toEntityFromDTO(ProductDTO productDTO){
+        return ProductEntity.builder()
                 .price(productDTO.getPrice())
                 .title(productDTO.getTitle())
                 .image(productDTO.getImage())

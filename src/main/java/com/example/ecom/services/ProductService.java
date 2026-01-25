@@ -2,12 +2,9 @@ package com.example.ecom.services;
 
 import com.example.ecom.dto.ProductDTO;
 import com.example.ecom.dto.ProductTitleDTO;
-import com.example.ecom.entities.Product;
+import com.example.ecom.entities.ProductEntity;
 import com.example.ecom.mappers.ProductMapper;
 import com.example.ecom.repository.ProductRepository;
-import com.sun.jdi.event.ExceptionEvent;
-import jakarta.persistence.PreUpdate;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -37,7 +34,7 @@ public class ProductService implements IProductService{
 
     @Override
     public ProductDTO createProduct(ProductDTO dto) throws Exception {
-        Product saved = repository.save(ProductMapper.toEntityFromDTO(dto));
+        ProductEntity saved = repository.save(ProductMapper.toEntityFromDTO(dto));
         return ProductMapper.toDTOFromEntity(saved);
     }
 }
