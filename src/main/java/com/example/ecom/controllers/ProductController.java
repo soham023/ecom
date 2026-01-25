@@ -21,11 +21,11 @@ import java.util.List;
 
 public class ProductController {
 
-    @Qualifier("fakeStoreProductService")
+//    @Qualifier("productService") // does not work at field level has to be at constructor level
     private IProductService productService;
 
     // Constructor Based Injection
-    ProductController(IProductService _productService){
+    ProductController(@Qualifier("productService")IProductService _productService){
         this.productService = _productService;
     }
 
@@ -50,14 +50,10 @@ public class ProductController {
         return ResponseEntity.ok(res);
     }
 
-
-
-
-
-
     @PostMapping
-    public ResponseEntity<ProductDTO> createProduct(@RequestBody ProductDTO productDTO){
-        throw new UnsupportedOperationException("Method not implemented yet");
+    public ResponseEntity<ProductDTO> createProduct(@RequestBody ProductDTO productDTO) throws Exception {
+        ProductDTO productDTONew =  this.productService.createProduct(productDTO);
+        return ResponseEntity.ok(productDTONew);
     }
 
 

@@ -6,6 +6,8 @@ import com.example.ecom.entities.Product;
 import com.example.ecom.mappers.ProductMapper;
 import com.example.ecom.repository.ProductRepository;
 import com.sun.jdi.event.ExceptionEvent;
+import jakarta.persistence.PreUpdate;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
