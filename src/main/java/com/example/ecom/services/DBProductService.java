@@ -23,7 +23,7 @@ public class DBProductService implements IProductService {
     }
 
     @Override
-    public ProductWithCategoryDTO getProductWithCategory(long id) {
+    public ProductWithCategoryDTO getProductWithCategory(Long id) {
         return null;
     }
 }

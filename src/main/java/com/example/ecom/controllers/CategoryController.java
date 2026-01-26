@@ -1,7 +1,9 @@
 package com.example.ecom.controllers;
 
 import com.example.ecom.dto.CategoryDTO;
+import com.example.ecom.exception.ProductNotFoundException;
 import com.example.ecom.services.ICategoryService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,5 +39,11 @@ public class CategoryController {
     public ResponseEntity<CategoryDTO> createCategory(@RequestBody CategoryDTO categoryDTO) throws Exception {
         CategoryDTO createCategory = this.categoryService.createCategory(categoryDTO);
         return ResponseEntity.ok(createCategory);
+    }
+
+
+    @ExceptionHandler(ProductNotFoundException.class)
+    public ResponseEntity<String> handleProductNotFound(ProductNotFoundException ex){
+        return  ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }
 }

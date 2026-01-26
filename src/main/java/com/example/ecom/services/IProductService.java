@@ -14,5 +14,5 @@ public interface IProductService {
 
     ProductDTO createProduct(ProductDTO dto) throws Exception;
 
-    ProductWithCategoryDTO getProductWithCategory(long id) throws Exception;
+    ProductWithCategoryDTO getProductWithCategory(Long id) throws Exception;
 }

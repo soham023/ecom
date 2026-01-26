@@ -37,7 +37,7 @@ public class FakeStoreProductService implements IProductService {
     }
 
     @Override
-    public ProductWithCategoryDTO getProductWithCategory(long id) {
+    public ProductWithCategoryDTO getProductWithCategory(Long id) {
         return null;
     }
 }

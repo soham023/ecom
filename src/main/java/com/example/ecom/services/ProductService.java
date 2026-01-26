@@ -5,6 +5,7 @@ import com.example.ecom.dto.ProductTitleDTO;
 import com.example.ecom.dto.ProductWithCategoryDTO;
 import com.example.ecom.entities.CategoryEntity;
 import com.example.ecom.entities.ProductEntity;
+import com.example.ecom.exception.ProductNotFoundException;
 import com.example.ecom.mappers.ProductMapper;
 import com.example.ecom.repository.CategoryRepository;
 import com.example.ecom.repository.ProductRepository;
@@ -48,10 +49,10 @@ public class ProductService implements IProductService{
     }
 
     @Override
-    public ProductWithCategoryDTO getProductWithCategory(long id) throws Exception{
+    public ProductWithCategoryDTO getProductWithCategory(Long id) throws Exception{
 
         ProductEntity product = repository.findById(id)
-                .orElseThrow(() -> new Exception(("Product not found!")));
+                .orElseThrow(() -> new ProductNotFoundException(("Product with Id " + id + " not found!")));
         return ProductMapper.toProductWithCategoryDTO(product);
     }
 }

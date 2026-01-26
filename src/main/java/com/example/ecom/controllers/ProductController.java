@@ -5,6 +5,8 @@ import com.example.ecom.dto.ProductTitleDTO;
 import com.example.ecom.dto.ProductWithCategoryDTO;
 import com.example.ecom.services.IProductService;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,9 +48,14 @@ public class ProductController {
     /* with PathVariable the parameter that you are passing into your function (here it is id), It gets
     wired up with the parameter that is coming from your routes.
      */
-    public ResponseEntity<ProductDTO>  getProductById (@PathVariable Long id) throws Exception {
-        ProductDTO res = this.productService.getProductById(id);
-        return ResponseEntity.ok(res);
+    public ResponseEntity<?>  getProductById (@PathVariable Long id){
+        try {
+            ProductDTO res = this.productService.getProductById(id);
+            return ResponseEntity.ok(res);
+        }
+        catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Product Not Found!");
+        }
     }
 
     @PostMapping
