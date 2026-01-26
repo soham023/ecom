@@ -2,6 +2,7 @@ package com.example.ecom.services;
 
 import com.example.ecom.dto.ProductDTO;
 import com.example.ecom.dto.ProductTitleDTO;
+import com.example.ecom.dto.ProductWithCategoryDTO;
 import com.example.ecom.entities.CategoryEntity;
 import com.example.ecom.entities.ProductEntity;
 import com.example.ecom.mappers.ProductMapper;
@@ -44,5 +45,13 @@ public class ProductService implements IProductService{
 
         ProductEntity saved = repository.save(ProductMapper.toEntityFromDTO(dto, category));
         return ProductMapper.toDTOFromEntity(saved);
+    }
+
+    @Override
+    public ProductWithCategoryDTO getProductWithCategory(long id) throws Exception{
+
+        ProductEntity product = repository.findById(id)
+                .orElseThrow(() -> new Exception(("Product not found!")));
+        return ProductMapper.toProductWithCategoryDTO(product);
     }
 }

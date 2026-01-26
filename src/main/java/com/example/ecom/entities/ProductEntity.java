@@ -17,7 +17,7 @@ public class ProductEntity extends BaseEntity {
     private String description;
     private String title;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "category_id", nullable = false)
     private CategoryEntity category;
 }

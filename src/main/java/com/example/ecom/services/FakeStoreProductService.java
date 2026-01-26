@@ -2,6 +2,7 @@ package com.example.ecom.services;
 
 import com.example.ecom.dto.ProductDTO;
 import com.example.ecom.dto.ProductTitleDTO;
+import com.example.ecom.dto.ProductWithCategoryDTO;
 import com.example.ecom.gateway.IProductGateway;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +33,11 @@ public class FakeStoreProductService implements IProductService {
 
     @Override
     public ProductDTO createProduct(ProductDTO dto) throws Exception {
+        return null;
+    }
+
+    @Override
+    public ProductWithCategoryDTO getProductWithCategory(long id) {
         return null;
     }
 }

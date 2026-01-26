@@ -2,6 +2,7 @@ package com.example.ecom.controllers;
 
 import com.example.ecom.dto.ProductDTO;
 import com.example.ecom.dto.ProductTitleDTO;
+import com.example.ecom.dto.ProductWithCategoryDTO;
 import com.example.ecom.services.IProductService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
@@ -54,6 +55,13 @@ public class ProductController {
     public ResponseEntity<ProductDTO> createProduct(@RequestBody ProductDTO productDTO) throws Exception {
         ProductDTO productDTONew =  this.productService.createProduct(productDTO);
         return ResponseEntity.ok(productDTONew);
+    }
+
+
+    @GetMapping("/{id}/detailsOfCategory")
+    public ResponseEntity<ProductWithCategoryDTO> getProductsWithCategory(@PathVariable long id) throws Exception{
+        ProductWithCategoryDTO dto = productService.getProductWithCategory(id);
+        return ResponseEntity.ok(dto);
     }
 
 
