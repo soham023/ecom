@@ -37,7 +37,7 @@ public class BaseEntity {
     @Id
 // autogenerate the value
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
 
 // spring will automatically populate the value of this field with the current timestamp, when the 1st record will be saved.

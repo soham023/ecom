@@ -1,6 +1,7 @@
 package com.example.ecom.mappers;
 
 import com.example.ecom.dto.ProductDTO;
+import com.example.ecom.entities.CategoryEntity;
 import com.example.ecom.entities.ProductEntity;
 
 public class ProductMapper {
@@ -11,17 +12,17 @@ public class ProductMapper {
                 .price(productEntity.getPrice())
                 .title(productEntity.getTitle())
                 .image(productEntity.getImage())
-                .category(productEntity.getCategory())
+                .categoryId(productEntity.getCategory().getId())
                 .description(productEntity.getDescription())
                 .build();
     }
 
-    public static ProductEntity toEntityFromDTO(ProductDTO productDTO){
+    public static ProductEntity toEntityFromDTO(ProductDTO productDTO, CategoryEntity category){
         return ProductEntity.builder()
                 .price(productDTO.getPrice())
                 .title(productDTO.getTitle())
                 .image(productDTO.getImage())
-                .category(productDTO.getCategory())
+                .category(category)
                 .description(productDTO.getDescription())
                 .build();
     }

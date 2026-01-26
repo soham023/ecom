@@ -2,8 +2,10 @@ package com.example.ecom.services;
 
 import com.example.ecom.dto.ProductDTO;
 import com.example.ecom.dto.ProductTitleDTO;
+import com.example.ecom.entities.CategoryEntity;
 import com.example.ecom.entities.ProductEntity;
 import com.example.ecom.mappers.ProductMapper;
+import com.example.ecom.repository.CategoryRepository;
 import com.example.ecom.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +17,11 @@ public class ProductService implements IProductService{
 
     private final ProductRepository repository;
 
-    public ProductService(ProductRepository repository) {
+    private final CategoryRepository categoryRepository;
+
+    public ProductService(ProductRepository repository, CategoryRepository categoryRepository) {
         this.repository = repository;
+        this.categoryRepository = categoryRepository;
     }
 
 
@@ -34,7 +39,10 @@ public class ProductService implements IProductService{
 
     @Override
     public ProductDTO createProduct(ProductDTO dto) throws Exception {
-        ProductEntity saved = repository.save(ProductMapper.toEntityFromDTO(dto));
+        CategoryEntity category = categoryRepository.findById(dto.getCategoryId())
+                .orElseThrow(() -> new Exception("Category not found"));
+
+        ProductEntity saved = repository.save(ProductMapper.toEntityFromDTO(dto, category));
         return ProductMapper.toDTOFromEntity(saved);
     }
 }
