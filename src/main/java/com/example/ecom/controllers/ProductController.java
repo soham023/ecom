@@ -3,6 +3,7 @@ package com.example.ecom.controllers;
 import com.example.ecom.dto.ProductDTO;
 import com.example.ecom.dto.ProductTitleDTO;
 import com.example.ecom.dto.ProductWithCategoryDTO;
+import com.example.ecom.exception.ProductNotFoundException;
 import com.example.ecom.services.IProductService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -71,9 +72,14 @@ public class ProductController {
         return ResponseEntity.ok(dto);
     }
 
-
     @GetMapping("/count")
     public int getCategoryCount(){
         return 5;
     }
+
+//    @ExceptionHandler(ProductNotFoundException.class)
+//    public ResponseEntity<String> handleProductNotFound(ProductNotFoundException ex){
+//        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+//    }
+
 }

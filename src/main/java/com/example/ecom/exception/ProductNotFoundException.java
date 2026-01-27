@@ -24,3 +24,7 @@ public class ProductNotFoundException extends  RuntimeException{
     }
 }
 
+// then go to the Controller folder and add @ExceptionHandler at the Bottom
+// does not work cross controller
+
+
