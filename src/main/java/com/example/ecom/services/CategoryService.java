@@ -30,7 +30,6 @@ public class CategoryService implements ICategoryService{
         return categoryRepository.findAll().stream()
                 .map(category -> CategoryDTO.builder()
                         .Id(category.getId())
-                        .products(category.getProducts())
                         .name(category.getName())
                         .build()
                 )

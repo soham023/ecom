@@ -7,6 +7,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -17,5 +18,6 @@ import java.util.List;
 public class CategoryDTO {
     private Long Id;
     private String name;
-    private List<ProductEntity> products;
+    @Builder.Default
+    private List<ProductDTO> products = new ArrayList<>();
 }

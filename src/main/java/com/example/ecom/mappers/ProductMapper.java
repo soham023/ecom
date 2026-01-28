@@ -34,7 +34,7 @@ public class ProductMapper {
                 .price(productEntity.getPrice())
                 .title(productEntity.getTitle())
                 .image(productEntity.getImage())
-//                productEntity.getCategory() is actually a DB cal in case of Lazy Loading(FETCHTYPE.LAZY)
+//                productEntity.getCategory() is actually a DB call in case of Lazy Loading(FETCHTYPE.LAZY)
                 .category(CategoryMapper.toDTOFromEntity(productEntity.getCategory()))
                 .description(productEntity.getDescription())
                 .build();
