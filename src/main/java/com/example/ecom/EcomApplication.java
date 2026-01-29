@@ -4,6 +4,7 @@ import io.github.cdimascio.dotenv.Dotenv;
 import io.github.cdimascio.dotenv.DotenvEntry;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 // aspect oriented programming
@@ -17,7 +18,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 // Once you enable this it'll look for this annotations ( @CreatedDate , @LastModifiedDate )
 // This does global auditing **(refer to BaseEntity)
 @EnableJpaAuditing
-
+//no need to add EnableDiscoveryClient anymore
+@EnableDiscoveryClient
 public class EcomApplication {
 	public static void main(String[] args) {
 
